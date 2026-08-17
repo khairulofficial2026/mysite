@@ -14,16 +14,24 @@
 
 <style>
   :root{
-    --bg: #030712;
-    --bg-alt: #0b1120;
+    /* Updated Color Scheme based on #09105c */
+    --bg: #09105c;
+    --bg-alt: #0e1a78;
     --paper: #ffffff;
-    --paper-dim: #94a3b8;
-    --gold: #f59e0b;
-    --gold-soft: rgba(245, 158, 11, 0.15);
+    --paper-dim: #cbd5e1; /* Lighter dim for dark bg */
+    
+    --gold: #facc15; /* Brighter gold for contrast */
+    --gold-soft: rgba(250, 204, 21, 0.15);
+    
     --whatsapp: #22c55e;
     --whatsapp-soft: rgba(34, 197, 94, 0.15);
-    --line: rgba(255, 255, 255, 0.12);
+    
+    --line: rgba(255, 255, 255, 0.18); /* Slightly more visible lines */
     --max: 600px;
+    
+    /* Super Smooth Easing */
+    --ease-out-swift: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   *{ box-sizing: border-box; }
@@ -34,7 +42,7 @@
     background: var(--bg);
     color: var(--paper);
     font-family: 'Tiro Bangla', sans-serif;
-    line-height: 1.6;
+    line-height: 1.7; /* Slightly increased line height for readability */
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -44,79 +52,92 @@
 
   .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 
-  /* Header & Navigation Animation */
+  /* Header & Navigation */
   header{
     position: fixed; top:0; left:0; right:0; z-index: 100;
-    backdrop-filter: blur(16px);
-    background: rgba(3, 7, 18, 0.9);
+    backdrop-filter: blur(20px); /* Increased blur */
+    background: rgba(9, 16, 92, 0.85); /* Adjusted with new bg */
     border-bottom: 1px solid var(--line);
-    animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: background 0.5s var(--ease-out-swift), transform 0.5s var(--ease-out-swift);
   }
-  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height: 65px; }
-  .brand{ font-family:'Caveat', cursive; font-size: 2.2rem; font-weight: 700; color: #ffffff; }
+  
+  /* Initial state for animation */
+  body.loaded header {
+    animation: fadeInDown 1s var(--ease-out-swift) forwards;
+  }
+
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height: 70px; /* Slightly taller */ }
+  .brand{ font-family:'Caveat', cursive; font-size: 2.5rem; font-weight: 700; color: #ffffff; }
   .brand span{ color: var(--gold); }
   
-  .navlinks{ display:flex; gap: 20px; list-style:none; margin:0; padding:0; }
+  .navlinks{ display:flex; gap: 25px; list-style:none; margin:0; padding:0; }
   .navlinks a{
-    color: var(--paper-dim); font-size: 0.9rem; letter-spacing: 0.05em;
-    text-transform: uppercase; font-weight: 600; transition: color 0.3s ease; position: relative;
+    color: var(--paper-dim); font-size: 0.95rem; letter-spacing: 0.02em;
+    text-transform: uppercase; font-weight: 600; transition: color 0.4s var(--ease-out-swift); position: relative;
     font-family: 'Inter', sans-serif;
   }
   .navlinks a::after{
-    content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-    background: var(--gold); transition: width 0.3s ease;
+    content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0;
+    background: var(--gold); transition: width 0.4s var(--ease-out-swift);
   }
-  .navlinks a:hover{ color: var(--gold); }
+  .navlinks a:hover{ color: var(--paper); } /* Changed to pure white on hover */
   .navlinks a:hover::after{ width: 100%; }
 
   @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   /* Scroll Reveal Animation Classes */
   .reveal-up {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(50px);
+    transition: opacity 1.2s var(--ease-out-swift), transform 1.2s var(--ease-out-swift);
   }
   .reveal-up.active {
     opacity: 1;
     transform: translateY(0);
   }
 
-  main{ padding-top: 65px; }
-  section{ padding: 70px 0; border-bottom: 1px solid var(--line); }
+  main{ padding-top: 70px; }
+  section{ padding: 80px 0; border-bottom: 1px solid var(--line); }
 
   .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--gold);
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; display:block;
+    font-family:'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 15px; display:block;
   }
 
-  /* Hero & Image Styling with Entrance Animations */
-  .hero{ min-height: 85vh; display:flex; flex-direction:column; justify-content:center; text-align: center; }
+  /* Hero Section */
+  .hero{ min-height: 90vh; display:flex; flex-direction:column; justify-content:center; text-align: center; }
   
   .profile-container {
-    width: 140px; height: 140px; margin: 0 auto 24px auto; border-radius: 50%;
-    padding: 4px; background: linear-gradient(135deg, var(--gold), var(--whatsapp));
-    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
-    animation: profilePop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    width: 160px; height: 160px; margin: 0 auto 30px auto; border-radius: 50%;
+    padding: 5px; background: linear-gradient(135deg, var(--gold), var(--whatsapp));
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Soften shadow */
+    position: relative;
+    opacity: 0; /* For JS load animation */
   }
+  
+  /* JS adds 'loaded' class to body to trigger this */
+  body.loaded .profile-container {
+    animation: profilePop 1.2s var(--ease-out-swift) forwards;
+  }
+
   .profile-img {
     width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    background: var(--bg-alt); border: 3px solid var(--bg);
+    background: var(--bg-alt); border: 4px solid var(--bg);
   }
 
   @keyframes profilePop {
-    0% { opacity: 0; transform: scale(0.5); }
-    100% { opacity: 1; transform: scale(1); }
+    0% { opacity: 0; transform: scale(0.3) rotate(-10deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
   }
 
   .hero h1{ 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(2.4rem, 7vw, 3.5rem); 
-    line-height: 1.2; 
-    margin: 12px 0 16px; 
+    font-size: clamp(2.8rem, 8vw, 4rem); 
+    line-height: 1.1; 
+    margin: 15px 0 20px; 
     color: #ffffff; 
     font-style: italic;
   }
@@ -125,74 +146,84 @@
   .hero p{ 
     font-family: 'Inter', sans-serif; 
     color: var(--paper-dim); 
-    font-size: 1.05rem; 
-    line-height: 1.7;
-    margin: 0 auto 28px auto; 
-    max-width: 500px; 
+    font-size: 1.1rem; 
+    margin: 0 auto 35px auto; 
+    max-width: 520px; 
   }
   
   .hero-badge {
-    display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500;
-    color: var(--gold); background: var(--gold-soft); padding: 6px 14px; border-radius: 6px;
-    border: 1px solid rgba(245, 158, 11, 0.3); margin-bottom: 12px; letter-spacing: 0.03em;
+    display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500;
+    color: var(--gold); background: var(--gold-soft); padding: 8px 18px; border-radius: 50px; /* Pill shape */
+    border: 1px solid rgba(250, 204, 21, 0.3); margin-bottom: 15px; letter-spacing: 0.05em;
   }
 
-  .contact-btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .contact-btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
   .btn{
-    display:inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px 24px; background: var(--gold); color: #030712;
-    font-size: 1rem; font-weight: 700; border-radius: 6px; font-family: 'Inter', sans-serif;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+    display:inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 30px; background: var(--gold); color: var(--bg); /* Text color matches new bg */
+    font-size: 1.05rem; font-weight: 700; border-radius: 50px; font-family: 'Inter', sans-serif;
+    transition: transform 0.4s var(--ease-out-swift), background 0.4s ease, box-shadow 0.4s ease;
+    position: relative; overflow: hidden; z-index: 1;
   }
-  .btn:hover{ background: #d97706; transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3); }
+  
+  /* Shine effect on hover */
+  .btn::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s; z-index: -1;
+  }
+  
+  .btn:hover{ background: #eab308; transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+  .btn:hover::before { left: 100%; }
+
   .btn-outline {
-    background: transparent; border: 1px solid var(--whatsapp); color: var(--whatsapp);
+    background: transparent; border: 2px solid var(--whatsapp); color: var(--whatsapp);
   }
-  .btn-outline:hover { background: var(--whatsapp-soft); color: #ffffff; transform: translateY(-3px) scale(1.02); }
+  .btn-outline:hover { background: var(--whatsapp); color: var(--bg); border-color: var(--whatsapp); transform: translateY(-5px) scale(1.02); }
 
   /* Contact Section */
-  .contact-section h2 { font-size: 2.2rem; margin-bottom: 10px; color: #ffffff; }
-  .contact-desc { color: var(--paper-dim); font-size: 1rem; margin-bottom: 30px; font-family: 'Tiro Bangla', sans-serif; }
+  .contact-section h2 { font-size: 2.5rem; margin-bottom: 15px; color: #ffffff; }
+  .contact-desc { color: var(--paper-dim); font-size: 1.1rem; margin-bottom: 40px; font-family: 'Tiro Bangla', sans-serif; }
   
-  .contact-info-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
   .contact-info-item {
-    display: flex; align-items: center; gap: 16px; background: var(--bg-alt);
-    padding: 16px 20px; border-radius: 10px; border: 1px solid var(--line);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex; align-items: center; gap: 20px; background: var(--bg-alt);
+    padding: 20px 25px; border-radius: 15px; border: 1px solid var(--line);
+    transition: transform 0.4s var(--ease-out-swift), border-color 0.4s ease, box-shadow 0.4s ease;
   }
-  .contact-info-item:hover { transform: translateX(6px); border-color: rgba(245,158,11,0.4); }
+  .contact-info-item:hover { transform: translateX(10px); border-color: rgba(250,204,21,0.5); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
   .contact-icon {
-    width: 44px; height: 44px; background: var(--whatsapp-soft); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; color: var(--whatsapp); font-size: 1.2rem; flex-shrink: 0;
+    width: 50px; height: 50px; background: var(--gold-soft); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.4rem; flex-shrink: 0;
   }
-  .contact-detail span { display: block; font-size: 0.8rem; color: var(--paper-dim); text-transform: uppercase; font-family: 'Inter', sans-serif; }
-  .contact-detail b { font-size: 1.05rem; color: #ffffff; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .contact-detail span { display: block; font-size: 0.85rem; color: var(--paper-dim); text-transform: uppercase; font-family: 'Inter', sans-serif; margin-bottom: 2px; }
+  .contact-detail b { font-size: 1.1rem; color: #ffffff; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: 0.01em; }
 
-  /* Form Animation Styles */
+  /* Form Styles */
   .contact-form {
-    display: flex; flex-direction: column; gap: 18px; background: var(--bg-alt);
-    padding: 28px; border-radius: 12px; border: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 20px; background: var(--bg-alt);
+    padding: 35px; border-radius: 15px; border: 1px solid var(--line);
   }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group label { font-size: 0.9rem; color: #ffffff; font-family: 'Tiro Bangla', sans-serif; font-weight: 500; }
+  .form-group { display: flex; flex-direction: column; gap: 10px; }
+  .form-group label { font-size: 0.95rem; color: #ffffff; font-family: 'Inter', sans-serif; font-weight: 500; }
   .form-control {
-    width: 100%; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line);
-    border-radius: 8px; color: #ffffff; font-family: 'Tiro Bangla', sans-serif; font-size: 1rem;
+    width: 100%; padding: 16px 18px; background: var(--bg); border: 2px solid var(--line);
+    border-radius: 10px; color: #ffffff; font-family: 'Tiro Bangla', sans-serif; font-size: 1.1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .form-control::placeholder { color: #64748b; }
-  .form-control:focus { outline: none; border-color: var(--whatsapp); box-shadow: 0 0 0 3px var(--whatsapp-soft); }
-  textarea.form-control { resize: vertical; min-height: 130px; }
+  .form-control::placeholder { color: #94a3b8; }
+  .form-control:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft); }
+  textarea.form-control { resize: vertical; min-height: 150px; }
 
   .submit-btn {
-    width: 100%; padding: 15px; background: var(--whatsapp); color: #030712; font-weight: 700;
-    border: none; border-radius: 8px; cursor: pointer; font-size: 1.05rem; font-family: 'Inter', sans-serif;
-    transition: background 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 6px;
+    width: 100%; padding: 18px; background: var(--whatsapp); color: var(--bg); font-weight: 700;
+    border: none; border-radius: 10px; cursor: pointer; font-size: 1.1rem; font-family: 'Inter', sans-serif;
+    transition: background 0.3s ease, transform 0.4s var(--ease-out-swift), box-shadow 0.4s ease;
+    display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 10px;
   }
-  .submit-btn:hover { background: #16a34a; color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3); }
+  .submit-btn:hover { background: #16a34a; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4); }
 
-  footer { padding: 40px 0; text-align: center; font-size: 0.9rem; color: var(--paper-dim); font-family: 'Inter', sans-serif; }
+  footer { padding: 50px 0; text-align: center; font-size: 0.95rem; color: var(--paper-dim); font-family: 'Inter', sans-serif; border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
@@ -213,138 +244,6 @@
   <section id="hero" class="hero wrap reveal-up">
     <div>
       <div class="profile-container">
-        <img id="profile-img" src="" alt="Profile" class="profile-img">
-      </div>
-
-      <span class="hero-badge" id="hero-badge">Welcome</span>
-      <h1 id="hero-headline">Headline</h1>
-      <p id="hero-bio">Bio</p>
-      
-      <div class="contact-btn-group">
-        <a href="#contact" class="btn">Let's Connect</a>
-        <a id="whatsapp-btn" href="#" target="_blank" class="btn btn-outline">Chat on WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="wrap reveal-up" style="border-bottom:none;">
-    <span class="eyebrow">02 — Contact</span>
-    <div>
-      <h2>Let's Talk!</h2>
-      <p class="contact-desc">আপনার নতুন প্রজেক্ট সম্পর্কে আলোচনা করতে ফর্মটি পূরণ করুন। সাবমিট করার সাথে সাথেই বার্তাটি সরাসরি আপনার হোয়াটসঅ্যাপে চলে আসবে।</p>
-    </div>
-
-    <div class="contact-info-list">
-      <a id="whatsapp-link" href="#" target="_blank" class="contact-info-item">
-        <div class="contact-icon">💬</div>
-        <div class="contact-detail">
-          <span>WhatsApp Number</span>
-          <b id="whatsapp-display">+880 1700-000000</b>
-        </div>
-      </a>
-      <a id="email-link" href="#" class="contact-info-item" style="border-color: var(--line);">
-        <div class="contact-icon" style="background: var(--gold-soft); color: var(--gold);">✉️</div>
-        <div class="contact-detail">
-          <span>Email Address</span>
-          <b id="email-display">email@gmail.com</b>
-        </div>
-      </a>
-    </div>
-
-    <!-- WhatsApp Form -->
-    <form class="contact-form" onsubmit="sendToWhatsApp(event)">
-      <div class="form-group">
-        <label>আপনার নাম (Your Name)</label>
-        <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
-      </div>
-      <div class="form-group">
-        <label>ফোন নম্বর (Phone Number)</label>
-        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-      </div>
-      <div class="form-group">
-        <label>ইমেইল (Email)</label>
-        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
-      </div>
-      <div class="form-group">
-        <label>আপনার বার্তা... (Your Message)</label>
-        <textarea id="message" class="form-control" placeholder="Write something about your project or message..." required></textarea>
-      </div>
-      <button type="submit" class="submit-btn">
-        <span>Send Message on WhatsApp</span> 🚀
-      </button>
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <p id="footer-text">© 2026 Portfolio. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- Config File Link -->
-<script src="config.js"></script>
-
-<script>
-  // Dynamically load configuration values into HTML elements
-  document.addEventListener("DOMContentLoaded", () => {
-    if (typeof portfolioConfig !== "undefined") {
-      document.getElementById("page-title").innerText = `${portfolioConfig.brandName} — ${portfolioConfig.name}`;
-      document.getElementById("profile-img").src = portfolioConfig.profileImage;
-      document.getElementById("hero-badge").innerText = portfolioConfig.heroBadge;
-      document.getElementById("hero-headline").innerHTML = portfolioConfig.headline;
-      document.getElementById("hero-bio").innerText = portfolioConfig.bio;
-      
-      const waUrl = `https://wa.me/${portfolioConfig.whatsappNumber}`;
-      document.getElementById("whatsapp-btn").href = waUrl;
-      document.getElementById("whatsapp-link").href = waUrl;
-      document.getElementById("whatsapp-display").innerText = portfolioConfig.whatsappDisplay;
-
-      const emailUrl = `mailto:${portfolioConfig.email}`;
-      document.getElementById("email-link").href = emailUrl;
-      document.getElementById("email-display").innerText = portfolioConfig.email;
-
-      document.getElementById("footer-text").innerHTML = `© ${portfolioConfig.copyrightYear} ${portfolioConfig.name} (${portfolioConfig.brandName}). All rights reserved.`;
-    }
-  });
-
-  // Smooth Scroll Reveal Animation Observer
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
-
-  // WhatsApp Redirect Function
-  function sendToWhatsApp(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    const whatsappNumber = typeof portfolioConfig !== "undefined" ? portfolioConfig.whatsappNumber : "8801700000000";
-
-    const text = `Hello, I'm reaching out from your portfolio.\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Message:* ${message}`;
-    const encodedText = encodeURIComponent(text);
-
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-    window.open(whatsappURL, '_blank');
-  }
-</script>
-
-</body>
-</html>
+        <!-- === YOUR PICTURE GOES HERE === -->
+        <img id="profile-img" src="https://i.imgur.com/your_image_id.jpg" alt="Khairul Islam Juseb" class="profile-img">
+        
