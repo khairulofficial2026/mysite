@@ -10,9 +10,9 @@ const portfolioConfig = {
   profileImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
   
   // যোগাযোগের তথ্য ও হোয়াটসঅ্যাপ নম্বর (কান্ট্রি কোড সহ, যেমন: 8801700000000)
-  whatsappNumber: "8801700000000",
-  whatsappDisplay: "+880 1700-000000",
-  email: "juseb@gmail.com",
+  whatsappNumber: "8801886870816",
+  whatsappDisplay: "+880 1886870816",
+  email: "khairulislamjuseb@gmail.com",
   
   // কপিরাইট ইয়ার
   copyrightYear: "2026"
