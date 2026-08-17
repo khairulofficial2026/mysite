@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature — Khairul Islam Juseb</title>
+<meta name="description" content="Portfolio of Khairul Islam Juseb under the brand Signature.">
+
+<!-- Tiro Bangla Font & Premium English Fonts (Playfair Display, Inter, Caveat) -->
+<link rel="stylesheet" href="https://fonts.maateen.me/tiro-bangla/font.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #030712;
+    --bg-alt: #0b1120;
+    --paper: #ffffff;
+    --paper-dim: #94a3b8;
+    --gold: #f59e0b;
+    --gold-soft: rgba(245, 158, 11, 0.15);
+    --whatsapp: #22c55e;
+    --whatsapp-soft: rgba(34, 197, 94, 0.15);
+    --line: rgba(255, 255, 255, 0.12);
+    --max: 600px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'Tiro Bangla', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  h1, h2, h3{ font-weight: 700; margin: 0; }
+
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+  /* Header & Navigation Animation */
+  header{
+    position: fixed; top:0; left:0; right:0; z-index: 100;
+    backdrop-filter: blur(16px);
+    background: rgba(3, 7, 18, 0.9);
+    border-bottom: 1px solid var(--line);
+    animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height: 65px; }
+  .brand{ font-family:'Caveat', cursive; font-size: 2.2rem; font-weight: 700; color: #ffffff; }
+  .brand span{ color: var(--gold); }
+  
+  .navlinks{ display:flex; gap: 20px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    color: var(--paper-dim); font-size: 0.9rem; letter-spacing: 0.05em;
+    text-transform: uppercase; font-weight: 600; transition: color 0.3s ease; position: relative;
+    font-family: 'Inter', sans-serif;
+  }
+  .navlinks a::after{
+    content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+    background: var(--gold); transition: width 0.3s ease;
+  }
+  .navlinks a:hover{ color: var(--gold); }
+  .navlinks a:hover::after{ width: 100%; }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll Reveal Animation Classes */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  main{ padding-top: 65px; }
+  section{ padding: 70px 0; border-bottom: 1px solid var(--line); }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; display:block;
+  }
+
+  /* Hero & Image Styling with Entrance Animations */
+  .hero{ min-height: 85vh; display:flex; flex-direction:column; justify-content:center; text-align: center; }
+  
+  .profile-container {
+    width: 140px; height: 140px; margin: 0 auto 24px auto; border-radius: 50%;
+    padding: 4px; background: linear-gradient(135deg, var(--gold), var(--whatsapp));
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+    animation: profilePop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  .profile-img {
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+    background: var(--bg-alt); border: 3px solid var(--bg);
+  }
+
+  @keyframes profilePop {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* Stylish English Bio Font Styling */
+  .hero h1{ 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(2.4rem, 7vw, 3.5rem); 
+    line-height: 1.2; 
+    margin: 12px 0 16px; 
+    color: #ffffff; 
+    font-style: italic;
+  }
+  .hero h1 span{ color: var(--gold); font-style: normal; }
+  
+  .hero p{ 
+    font-family: 'Inter', sans-serif; 
+    color: var(--paper-dim); 
+    font-size: 1.05rem; 
+    line-height: 1.7;
+    margin: 0 auto 28px auto; 
+    max-width: 500px; 
+  }
+  
+  .hero-badge {
+    display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500;
+    color: var(--gold); background: var(--gold-soft); padding: 6px 14px; border-radius: 6px;
+    border: 1px solid rgba(245, 158, 11, 0.3); margin-bottom: 12px; letter-spacing: 0.03em;
+  }
+
+  .contact-btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn{
+    display:inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 24px; background: var(--gold); color: #030712;
+    font-size: 1rem; font-weight: 700; border-radius: 6px; font-family: 'Inter', sans-serif;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn:hover{ background: #d97706; transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3); }
+  .btn-outline {
+    background: transparent; border: 1px solid var(--whatsapp); color: var(--whatsapp);
+  }
+  .btn-outline:hover { background: var(--whatsapp-soft); color: #ffffff; transform: translateY(-3px) scale(1.02); }
+
+  /* Contact Section */
+  .contact-section h2 { font-size: 2.2rem; margin-bottom: 10px; color: #ffffff; }
+  .contact-desc { color: var(--paper-dim); font-size: 1rem; margin-bottom: 30px; font-family: 'Tiro Bangla', sans-serif; }
+  
+  .contact-info-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+  .contact-info-item {
+    display: flex; align-items: center; gap: 16px; background: var(--bg-alt);
+    padding: 16px 20px; border-radius: 10px; border: 1px solid var(--line);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .contact-info-item:hover { transform: translateX(6px); border-color: rgba(245,158,11,0.4); }
+  .contact-icon {
+    width: 44px; height: 44px; background: var(--whatsapp-soft); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: var(--whatsapp); font-size: 1.2rem; flex-shrink: 0;
+  }
+  .contact-detail span { display: block; font-size: 0.8rem; color: var(--paper-dim); text-transform: uppercase; font-family: 'Inter', sans-serif; }
+  .contact-detail b { font-size: 1.05rem; color: #ffffff; font-weight: 600; font-family: 'Inter', sans-serif; }
+
+  /* Form Animation Styles */
+  .contact-form {
+    display: flex; flex-direction: column; gap: 18px; background: var(--bg-alt);
+    padding: 28px; border-radius: 12px; border: 1px solid var(--line);
+  }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 0.9rem; color: #ffffff; font-family: 'Tiro Bangla', sans-serif; font-weight: 500; }
+  .form-control {
+    width: 100%; padding: 14px 16px; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 8px; color: #ffffff; font-family: 'Tiro Bangla', sans-serif; font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .form-control::placeholder { color: #64748b; }
+  .form-control:focus { outline: none; border-color: var(--whatsapp); box-shadow: 0 0 0 3px var(--whatsapp-soft); }
+  textarea.form-control { resize: vertical; min-height: 130px; }
+
+  .submit-btn {
+    width: 100%; padding: 15px; background: var(--whatsapp); color: #030712; font-weight: 700;
+    border: none; border-radius: 8px; cursor: pointer; font-size: 1.05rem; font-family: 'Inter', sans-serif;
+    transition: background 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 6px;
+  }
+  .submit-btn:hover { background: #16a34a; color: #ffffff; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3); }
+
+  footer { padding: 40px 0; text-align: center; font-size: 0.9rem; color: var(--paper-dim); font-family: 'Inter', sans-serif; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">signature<span>.</span></a>
+    <ul class="navlinks">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero wrap reveal-up">
+    <div>
+      <!-- প্রোফাইল ছবি -->
+      <div class="profile-container">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Khairul Islam Juseb" class="profile-img">
+      </div>
+
+      <span class="hero-badge">Welcome to my digital space</span>
+      <h1>I'm <br><span>Khairul Islam Juseb</span></h1>
+      <p>I build modern, fast, and user-friendly websites.</p>
+      
+      <div class="contact-btn-group">
+        <a href="#contact" class="btn">Let's Connect</a>
+        <a href="https://wa.me/8801700000000" target="_blank" class="btn btn-outline">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="wrap reveal-up" style="border-bottom:none;">
+    <span class="eyebrow">02 — Contact</span>
+    <div>
+      <h2>Let's Talk!</h2>
+      <p class="contact-desc">আপনার নতুন প্রজেক্ট সম্পর্কে আলোচনা করতে ফর্মটি পূরণ করুন। সাবমিট করার সাথে সাথেই বার্তাটি সরাসরি আপনার হোয়াটসঅ্যাপে চলে আসবে।</p>
+    </div>
+
+    <div class="contact-info-list">
+      <a href="https://wa.me/8801700000000" target="_blank" class="contact-info-item">
+        <div class="contact-icon">💬</div>
+        <div class="contact-detail">
+          <span>WhatsApp Number</span>
+          <b>+880 1700-000000</b>
+        </div>
+      </a>
+      <a href="mailto:juseb@gmail.com" class="contact-info-item" style="border-color: var(--line);">
+        <div class="contact-icon" style="background: var(--gold-soft); color: var(--gold);">✉️</div>
+        <div class="contact-detail">
+          <span>Email Address</span>
+          <b>juseb@gmail.com</b>
+        </div>
+      </a>
+    </div>
+
+    <!-- WhatsApp Form -->
+    <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+      <div class="form-group">
+        <label>আপনার নাম (Your Name)</label>
+        <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label>ফোন নম্বর (Phone Number)</label>
+        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+      </div>
+      <div class="form-group">
+        <label>ইমেইল (Email)</label>
+        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>আপনার বার্তা... (Your Message)</label>
+        <textarea id="message" class="form-control" placeholder="Write something about your project or message..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">
+        <span>Send Message on WhatsApp</span> 🚀
+      </button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Khairul Islam Juseb (Signature). All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth Scroll Reveal Animation Observer
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+  // WhatsApp Redirect Function
+  function sendToWhatsApp(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const whatsappNumber = "8801700000000"; // আপনার আসল হোয়াটসঅ্যাপ নম্বর এখানে দিন
+
+    const text = `Hello, I'm reaching out from your portfolio.\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Message:* ${message}`;
+    const encodedText = encodeURIComponent(text);
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+    window.open(whatsappURL, '_blank');
+  }
+</script>
+
+</body>
+</html>
