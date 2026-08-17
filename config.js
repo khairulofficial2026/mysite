@@ -1,19 +1,17 @@
 // config.js - আপনার পোর্টফোলিওর গুরুত্বপূর্ণ তথ্যসমূহ এখানে পরিবর্তন করুন
 const portfolioConfig = {
+  brandName: "Signature",
   name: "Khairul Islam Juseb",
-  brandName: "signature.",
-  heroBadge: "Welcome to my digital space",
-  headline: "I'm <br><span>Khairul Islam Juseb</span>",
-  bio: "I build modern, fast, and user-friendly websites.",
   
-  // প্রোফাইল ছবির লিংক অথবা লোকাল ফাইলের নাম (যেমন: 'profile.jpg')
-  profileImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+  // আপনার ছবির ডিরেক্ট লিংক এখানে বসানো হলো
+  profileImage: "https://i.ibb.co.com/W46J2ncH/image.png", 
   
-  // যোগাযোগের তথ্য ও হোয়াটসঅ্যাপ নম্বর (কান্ট্রি কোড সহ, যেমন: 8801700000000)
+  heroBadge: "Available for Freelance",
+  headline: "Building <span>digital experiences</span> that matter.",
+  bio: "Hi, I am Khairul Islam Juseb. A passionate web designer crafting clean, elegant, and user-centric digital solutions under the brand Signature.",
   whatsappNumber: "8801886870816",
   whatsappDisplay: "+880 1886870816",
   email: "khairulislamjuseb@gmail.com",
-  
-  // কপিরাইট ইয়ার
   copyrightYear: "2026"
 };
+
