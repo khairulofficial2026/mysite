@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signature — Khairul Islam Juseb</title>
+<title id="page-title">Signature — Portfolio</title>
 <meta name="description" content="Portfolio of Khairul Islam Juseb under the brand Signature.">
 
-<!-- Tiro Bangla Font & Premium English Fonts (Playfair Display, Inter, Caveat) -->
+<!-- Tiro Bangla Font & Premium English Fonts -->
 <link rel="stylesheet" href="https://fonts.maateen.me/tiro-bangla/font.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,7 +112,6 @@
     100% { opacity: 1; transform: scale(1); }
   }
 
-  /* Stylish English Bio Font Styling */
   .hero h1{ 
     font-family: 'Playfair Display', serif; 
     font-size: clamp(2.4rem, 7vw, 3.5rem); 
@@ -200,7 +199,7 @@
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand">signature<span>.</span></a>
+    <a href="#top" class="brand" id="nav-brand">signature<span>.</span></a>
     <ul class="navlinks">
       <li><a href="#hero">Home</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -213,18 +212,17 @@
   <!-- HERO SECTION -->
   <section id="hero" class="hero wrap reveal-up">
     <div>
-      <!-- প্রোফাইল ছবি -->
       <div class="profile-container">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Khairul Islam Juseb" class="profile-img">
+        <img id="profile-img" src="" alt="Profile" class="profile-img">
       </div>
 
-      <span class="hero-badge">Welcome to my digital space</span>
-      <h1>I'm <br><span>Khairul Islam Juseb</span></h1>
-      <p>I build modern, fast, and user-friendly websites.</p>
+      <span class="hero-badge" id="hero-badge">Welcome</span>
+      <h1 id="hero-headline">Headline</h1>
+      <p id="hero-bio">Bio</p>
       
       <div class="contact-btn-group">
         <a href="#contact" class="btn">Let's Connect</a>
-        <a href="https://wa.me/8801700000000" target="_blank" class="btn btn-outline">Chat on WhatsApp</a>
+        <a id="whatsapp-btn" href="#" target="_blank" class="btn btn-outline">Chat on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -238,18 +236,18 @@
     </div>
 
     <div class="contact-info-list">
-      <a href="https://wa.me/8801700000000" target="_blank" class="contact-info-item">
+      <a id="whatsapp-link" href="#" target="_blank" class="contact-info-item">
         <div class="contact-icon">💬</div>
         <div class="contact-detail">
           <span>WhatsApp Number</span>
-          <b>+880 1700-000000</b>
+          <b id="whatsapp-display">+880 1700-000000</b>
         </div>
       </a>
-      <a href="mailto:juseb@gmail.com" class="contact-info-item" style="border-color: var(--line);">
+      <a id="email-link" href="#" class="contact-info-item" style="border-color: var(--line);">
         <div class="contact-icon" style="background: var(--gold-soft); color: var(--gold);">✉️</div>
         <div class="contact-detail">
           <span>Email Address</span>
-          <b>juseb@gmail.com</b>
+          <b id="email-display">email@gmail.com</b>
         </div>
       </a>
     </div>
@@ -282,11 +280,36 @@
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Khairul Islam Juseb (Signature). All rights reserved.</p>
+    <p id="footer-text">© 2026 Portfolio. All rights reserved.</p>
   </div>
 </footer>
 
+<!-- Config File Link -->
+<script src="config.js"></script>
+
 <script>
+  // Dynamically load configuration values into HTML elements
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof portfolioConfig !== "undefined") {
+      document.getElementById("page-title").innerText = `${portfolioConfig.brandName} — ${portfolioConfig.name}`;
+      document.getElementById("profile-img").src = portfolioConfig.profileImage;
+      document.getElementById("hero-badge").innerText = portfolioConfig.heroBadge;
+      document.getElementById("hero-headline").innerHTML = portfolioConfig.headline;
+      document.getElementById("hero-bio").innerText = portfolioConfig.bio;
+      
+      const waUrl = `https://wa.me/${portfolioConfig.whatsappNumber}`;
+      document.getElementById("whatsapp-btn").href = waUrl;
+      document.getElementById("whatsapp-link").href = waUrl;
+      document.getElementById("whatsapp-display").innerText = portfolioConfig.whatsappDisplay;
+
+      const emailUrl = `mailto:${portfolioConfig.email}`;
+      document.getElementById("email-link").href = emailUrl;
+      document.getElementById("email-display").innerText = portfolioConfig.email;
+
+      document.getElementById("footer-text").innerHTML = `© ${portfolioConfig.copyrightYear} ${portfolioConfig.name} (${portfolioConfig.brandName}). All rights reserved.`;
+    }
+  });
+
   // Smooth Scroll Reveal Animation Observer
   const observerOptions = {
     threshold: 0.15,
@@ -313,7 +336,7 @@
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
 
-    const whatsappNumber = "8801700000000"; // আপনার আসল হোয়াটসঅ্যাপ নম্বর এখানে দিন
+    const whatsappNumber = typeof portfolioConfig !== "undefined" ? portfolioConfig.whatsappNumber : "8801700000000";
 
     const text = `Hello, I'm reaching out from your portfolio.\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Message:* ${message}`;
     const encodedText = encodeURIComponent(text);
